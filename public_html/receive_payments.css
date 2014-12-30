@@ -1,0 +1,242 @@
+
+
+/* Styles pertaining to receive_payments.php */
+.nobr {
+  white-space: nowrap;
+  }
+.basket_section {
+  margin-top:1.5em;
+  margin-bottom:1.5em;
+  clear:both;
+  }
+.member_name {
+  display:inline-block;
+  font-weight:bold;
+  }
+.delcode_id {
+  display:inline-block;
+  text-align:center;
+  width:75px;
+  }
+.member_id {
+  display:inline-block;
+  width:50px;
+  text-align:right;
+  padding-right:10px;
+  }
+.ledger_info {
+  overflow:auto;
+  /* min-height:20px; */
+  background-color: #eed;
+  width: 100%;
+  }
+.controls {
+  display:block;
+  float:right;
+  width:250px;
+  }
+.controls input[type=button] {
+  border:0;
+  cursor:pointer;
+  background-color:#750;
+  color:#fff;
+  }
+/* Styles pertaining to adjust_report.php */
+
+.data_row {
+  display:block;
+  clear:left;
+  }
+
+.description,
+.total {
+  display:block;
+  float:left;
+  width:100px;
+  line-height:20px;
+  }
+
+.description {
+  margin-left:75px;
+  }
+
+.total {
+  text-align:right;
+  }
+
+
+/* Styles pertaining to adjust_proces.php */
+
+#receive_payment_form {
+  position:relative;
+  background-color:#cdb;
+  padding:0;
+  }
+#receive_payment_form label {
+  display:inline-block;
+  margin-bottom:5px;
+  margin-right:5px;
+  width:75px;
+  text-align:right;
+  }
+label#comment_label,
+label#paypal_comment_label {
+  width:125px;
+  }
+label#effective_datetime_label {
+  width:155px;
+  }
+label#non_basket_payment_label {
+  width:200px;
+  }
+#amount,
+#paypal_fee {
+  width:75px;
+  text-align:right;
+  }
+#memo {
+  clear:left;
+  width:75px;
+  }
+#batch_no {
+  width:100px;
+  }
+#paypal_comment,
+#comment {
+  width:350px;
+  }
+#receive_payment_form .button {
+  float:right;
+  margin-right:10px;
+  }
+
+.close_button {
+  float:right;
+  position:relative;
+  height:16px;
+  width:16px;
+  right:0px;
+  top:-5px;
+  border:1px solid #cdb;
+  background-image:url("grfx/close_button.png");
+  opacity:0.5;
+  }
+.close_button:hover {
+  opacity:1;
+  }
+
+
+
+/* Styles for the all dropdowns */
+  .dropdown {
+    -transition:height 0.7s cubic-bezier(1,0,0.5,1);
+    -webkit-transition:height 0.7s cubic-bezier(1,0,0.5,1);
+    -moz-transition:height 0.7s cubic-bezier(1,0,0.5,1);
+    -o-transition:height 0.7s cubic-bezier(1,0,0.5,1);
+    -ie-transition:height 0.7s cubic-bezier(1,0,0.5,1);
+    }
+/* Styles for the Basket Selector */
+  #basket_dropdown {
+    position:absolute;
+    border:1px solid #000;
+    float:left;
+    width:300px;
+    height:26px;
+    overflow:hidden;
+    }
+  #basket_dropdown.clicked,
+  #basket_dropdown:hover {
+    height:400px;
+    }
+  h1.cycle_history {
+    width:294px;
+    font-size:16px;
+    color:#efe;
+    background-color:#050;
+    position:relative;
+    height:20px;
+    margin:0;
+    padding:3px;
+    }
+  #cycle_history {
+    width:100%;
+    background-color:#fff;
+    overflow:auto;
+    width:300px;
+    height:374px;
+    }
+  ul.cycle_history {
+    list-style-type:none;
+    padding-left:0;
+    }
+  ul.cycle_history li {
+    padding-top:10px;
+    text-align:left;
+    height:55px;
+    padding-left:70px;
+    border-top:1px solid transparent;
+    border-bottom:1px solid transparent;
+    }
+  ul.cycle_history li:hover {
+    }
+  ul.cycle_history li.view:hover {
+    cursor:pointer;
+    background-color:#efd;
+    border-top:1px solid #ad6;
+    border-bottom:1px solid #ad6;
+    }
+  ul.cycle_history li.current {
+    background-color:#fed;
+    border-top:1px solid #da6;
+    border-bottom:1px solid #da6;
+    }
+  ul.cycle_history li span {
+    vertical-align: middle;
+    }
+  .delivery_date {
+    display:block;
+    font-size:130%;
+    font-weight:bold;
+    color:#350;
+    }
+  .order_dates {
+    display:block;
+    font-size:90%;
+    color:#530;
+    }
+  .basket_qty {
+    color:#000;
+    }
+
+
+/* ANYTHING BELOW THIS LINE IS BOGUS */
+
+
+#foo {
+  transition: height 1s;
+  -moz-transition: height 1s; /* Firefox 4 */
+  -webkit-transition: height 1s; /* Safari and Chrome */
+  -o-transition: height 1s; /* Opera */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

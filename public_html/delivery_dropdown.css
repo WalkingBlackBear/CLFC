@@ -1,0 +1,99 @@
+/* Styles for all the dropdowns */
+.dropdown {
+  -transition:height 0.7s cubic-bezier(1,0,0.5,1);
+  -webkit-transition:height 0.7s cubic-bezier(1,0,0.5,1);
+  -moz-transition:height 0.7s cubic-bezier(1,0,0.5,1);
+  -o-transition:height 0.7s cubic-bezier(1,0,0.5,1);
+  -ie-transition:height 0.7s cubic-bezier(1,0,0.5,1);
+  }
+/* Styles for the delivery dropdown */
+#delivery_dropdown {
+  position:absolute;
+  border:1px solid #000;
+  /* float:right; */
+  width:40%;
+  max-width:400px;
+  height:26px;
+  overflow:hidden;
+  }
+#delivery_dropdown:hover {
+  width:400px;
+  height:400px;
+  }
+h1.delivery_select {
+  width:394px;
+  font-size:16px;
+  text-align:left;
+  color:#efe;
+  background-color:#050;
+  position:relative;
+  height:20px;
+  margin:0;
+  padding:3px;
+  }
+#delivery_select {
+  width:100%;
+  background-color:#fff;
+  overflow:auto;
+  width:400px;
+  height:374px;
+  }
+ul.delivery_select {
+  list-style-type:none;
+  padding-left:0;
+  }
+ul.delivery_select li {
+  padding-top:10px;
+  text-align:left;
+  height:120px;
+  padding-left:70px;
+  border-top:1px solid transparent;
+  border-bottom:1px solid transparent;
+  }
+ul.delivery_select li.active:hover {
+  cursor:pointer;
+  background-color:#efd;
+  border-top:1px solid #ad6;
+  border-bottom:1px solid #ad6;
+  }
+ul.delivery_select li span {
+  vertical-align: middle;
+  }
+ul.delivery_select li.select {
+  background-color:#eeb;
+  border-top:1px solid #cba;
+  border-bottom:1px solid #cba;
+  }
+.delcode {
+  display:block;
+  font-size:130%;
+  font-weight:bold;
+  color:#350;
+  }
+.delcode_action {
+  font-weight:bold;
+  color:#066;
+  }
+.deldesc {
+  display:block;
+  font-size:90%;
+  color:#530;
+  }
+li.deltype-dag {
+  background:url(grfx/deltype-dag.png) no-repeat 7px 7px;
+  }
+li.deltype-dac {
+  background:url(grfx/deltype-dac.png) no-repeat 7px 7px;
+  }
+li.deltype-dig {
+  background:url(grfx/deltype-dig.png) no-repeat 7px 7px;
+  }
+li.deltype-pag {
+  background:url(grfx/deltype-pag.png) no-repeat 7px 7px;
+  }
+li.deltype-pac {
+  background:url(grfx/deltype-pac.png) no-repeat 7px 7px;
+  }
+li.deltype-pig {
+  background:url(grfx/deltype-pig.png) no-repeat 7px 7px;
+  }

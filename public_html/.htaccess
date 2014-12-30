@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+#RewriteRule ^.*$ - [L] #removes redirects on all subdirectories
+RewriteRule ^help.php$ help.php [L,NC]
+RewriteRule ^producers/([A-Za-z0-9_\-\.]+)$ product_list.php\?type=producer_link&producer_link=$1 [L]
+RewriteRule ^producers/([A-Za-z0-9_\-\.]+)\.php$ product_list.php\?type=producer_link&producer_link=$1 [L]
+</IfModule>
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress

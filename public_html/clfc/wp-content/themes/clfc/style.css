@@ -1,0 +1,362 @@
+/*
+ Theme Name:     Cloverbelt Local Food Co-Op
+ Theme URI:      http://www.cloverbeltlocalfoodcoop.com/
+ Description:    CLFC Theme
+ Author:         Chris Pollard
+ Author URI:     http://www.cloverbeltlocalfoodcoop.com/
+ Template:       twentythirteen
+ Version:        1.0.0
+*/
+
+/* =Imports styles from the parent theme
+-------------------------------------------------------------- */
+@import url('../twentythirteen/style.css');
+
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+body {
+	font-family:Verdana, Geneva, sans-serif;
+	color:#202020;
+	background-color: #a6a289;
+	background-image:url(/images/WateringCanGardenBGfd.jpg);
+	background-repeat:no-repeat;
+	background-size:100%;
+	margin:10px 50px 5px 50px;
+}
+@font-face {
+    font-family: 'WindsorRegular';
+    src: url('/images/WindsorRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'WindsorBOLD';
+    src: url('/images/WindsorBOLD.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+/* WordPress Theme Styles */
+.site {
+	background: transparent;
+	width: 900px;
+	border: 0;
+}
+.site-main {
+	margin: 0;
+}
+.main-navigation {
+	text-align: justify;
+	clear: none;
+	margin: 0;
+	display: block;
+}
+.navbar {
+	background-color: #fff;
+	background-color:rgba(255, 255, 255, 0.8);
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	width: 95%;
+}
+.sidebar .entry-header, .sidebar .entry-content, .sidebar .entry-summary, .sidebar .entry-meta, .sidebar .post-navigation .nav-links, .sidebar .comment-reply-title, .sidebar .comment-respond .comment-form, .sidebar .must-log-in, .sidebar .page-content {
+padding: 0;
+}
+.navigation .nav-previous {
+	width:240px;
+}
+.paging-navigation .nav-next {
+	width:240px;
+	padding-left: 30px;
+}
+.hentry {
+	padding: 5px 10px;
+}
+.entry-header {
+	margin-bottom: 20px;
+	padding: 0;
+}
+.entry-title {
+	font-family: Windsor;
+}
+.entry-content {
+	/*font-family: 'Shadows Into Light Two', cursive;*/
+	font-size: 18px;
+	/*font-weight: bold;*/
+}
+.entry-content img.alignleft, .entry-content .wp-caption.alignleft {
+	margin-left: 5px;
+}
+.mp_cart_contents_widget th {
+	background: #222;
+}
+.mp_old_price {
+	color: #777;
+}
+.mp_current_price {
+	color: #900;
+	font-weight: bold;
+}
+a.mp_cart_direct_checkout_link {
+	color: #c9f3c7;
+}
+a:hover.mp_cart_direct_checkout_link {
+	color: #11430e;
+}
+.site-main .widget-area {
+	width: 230px;
+	margin-right: -10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+.site-main .sidebar-container {
+	top: 0px;
+}
+/*.widget {
+	background-color: rgba(247, 245, 231, 0.7);
+	font-size: 14px;
+	hyphens: auto;
+	margin: 0 10px 10px 0;
+	padding: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}*/
+.widget {
+	background-color: #f7f5e7;
+	background-color: rgba(247, 245, 231, 0.0);
+	margin: 0 10px 10px 0;
+	padding: 10px;
+}
+.widget .widget-title {
+	color: #fff;
+	font-weight: bold;
+	/*font: 900 normal 19px 'Shadows Into Light Two', cursive;*/
+	font: 900 normal 19px;
+	margin: 0;
+}
+.content-area {
+	margin-top: 0;
+}
+#content {
+	background-color: #fff;
+	background-color:rgba(255, 255, 255, 0.8);
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	float: left;
+	padding: 10px;
+	width: 620px;
+	margin: 5px 0 10px 10px;
+}
+p {
+	text-indent: 12px;
+	margin: 0 0 10px 0;
+}
+h1 {
+	background-color: #27781f;
+	background-color: rgba(39, 120, 31, 0.3);
+	padding: 10px 0;
+	text-align: center;
+	font-weight: bold;
+	color: #000;
+	font-size: 32px;
+	margin: 5px;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	font-size: 28px;
+	border: 1px #132b15 solid;
+}
+h2 {
+	font-size: 26px;
+	margin: 5px;
+}
+h3 {
+	background-color: #27781f;
+	background-color: rgba(39, 120, 31, 0.3);
+	/*font-family: 'Shadows Into Light Two', cursive;*/
+	padding: 10px 0;
+	text-align: center;
+	font-weight: bold;
+	color: #000;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	font-size: 28px;
+	border: 1px #132b15 solid;
+	font-size: 16px;
+	margin: 5px;
+}
+h4 {
+	font-size: 22px;
+	margin: 5px;
+}
+h5 {
+	font-size: 18px;
+	margin: 5px;
+}
+h6 {
+	background-color: #27781f;
+	background-color: rgba(39, 120, 31, 0.3);
+	padding: 10px 0;
+	text-align: center;
+	font-weight: bold;
+	color: #000;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	font-size: 28px;
+	border: 1px #132b15 solid;
+	font-size: 16px;
+	margin: 5px;
+}
+/* CLASS STYLES */
+.float_right {
+	float: right;
+}
+.float_left {
+	float: left;
+}
+.right {
+	text-align: right;
+}
+.left {
+	text-align: left;
+}
+.center {
+	text-align: center;
+}
+.justify {
+	text-align: justify;
+}
+.clearfix {
+	clear: both;
+}
+.bold {
+	font-weight: bold;
+}
+.italic {
+	font-style: italic;
+}
+.underline {
+	text-decoration: underline;
+}
+.strike {
+	text-decoration: line-through;
+}
+.logo {
+	padding: 0px 20px 0px 0px;
+}
+.engraved {
+	text-shadow: -1px -1px #888888, 1px 1px #fff;
+}
+.engrave_text {
+	text-shadow: 1px 1px #fff;
+}
+
+.rounded{
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+.shadow{
+	-moz-box-shadow:inset 0 0 4px #999999;
+   	-webkit-box-shadow:inset 0 0 4px #999999;
+   	box-shadow:inset 0 0 4px #999999;
+}
+.trans_white_bg {
+	background-color: #fff;
+	background-color:rgba(255, 255, 255, 0.7);
+	padding:0px 25px;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+}
+.trans_white_bg2 {
+	background-color: #fff;
+	background-color:rgba(255, 255, 255, 0.8);
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+.trans_black_bg {
+	background-color: #000;
+	background-color:rgba(0, 0, 0, 0.8);
+	padding:0px 25px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	color: #fff;
+	border: 1px solid #ccc;
+}
+.vert_middle {
+	vertical-align: middle;
+}
+.Windsor {
+	font-family:WindsorRegular;
+}
+.WindsorBold {
+	font-family:WindsorBOLD;
+}
+.intoLight {
+	/*font-family: 'Shadows Into Light Two', cursive;*/
+}
+.f12 {
+	font-size: 12px;
+}
+.f14 {
+	font-size: 14px;
+}
+.f16 {
+	font-size: 16px;
+}
+.f18 {
+	font-size: 18px;
+}
+.f20 {
+	font-size: 20px;
+}
+.f22 {
+	font-size: 22px;
+}
+.f24 {
+	font-size: 24px;
+}
+.f32 {
+	font-size: 32px;
+}
+.black {
+	color: #000;
+}
+.white {
+	color: #fff;
+}
+.rightSide {
+	width: 200px;
+	margin: 10px 10px 10px 5px;
+	padding: 10px;
+}
+.indent {
+	text-indent: 20px;
+}
+/* ID styles */
+#header {
+	height:140px;
+	padding-top: 15px;
+}
+#wrapper {
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#quotes {
+	width: 240px;
+	height: 100%;
+	margin: 10px 10px 10px 5px;
+	padding: 10px;
+}
+#footer {
+	clear:both;
+	margin:10px 0 0 0;
+	font-size:12px;
+/*	border:2px solid #333; */
+}
+#logo {
+	float: left;
+}
+#memberSocial {
+	float: right;
+	text-align: right;
+}

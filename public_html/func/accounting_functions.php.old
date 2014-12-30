@@ -1,0 +1,454 @@
+<?php
+
+// THIS VERISON OF THE FILE IS INCOMPLETE BUT CONTAINS OPTIONS FOR INCREMENT, DECREMENT, AND SET
+// PRODUCT QUANTITIES, WHICH WERE DROPPED IN FAVOR OF JUST TAKING DELTA (INCREMENT) VALUES (+/-).
+
+
+include_once ('config_foodcoop.php');
+include_once ('general_functions.php');
+
+include_once ('func.get_producer.php');
+include_once ('func.get_product.php');
+include_once ('func.get_basket_item.php');
+include_once ('func.open_basket.php');
+include_once ('func.get_basket.php');
+
+session_start();
+echo '<pre>SESSION:
+'.print_r ($_SESSION,true).'</pre>';
+//valid_auth('cashier,site_admin');
+
+
+
+echo set_basket_item (92, 1003, 3, 'set_quantity', 4);
+
+function set_basket_item ($delivery_id, $member_id, $product_id, $action, $quantity)
+  {
+    // This function is used to change parameters of a basket_item
+    global $connection;
+    $member_id_you = $_SESSION['member_id'];
+    $producer_id_you = $_SESSION['producer_id_you'];
+
+    // Allow cashiers to override certain checks if the requested action is not for themselves
+    if ($member_id_you == $member_id || ! CurrentMember::auth_type('cashier'))
+      {
+        $cashier_override_not_set = true;
+      }
+
+    // Set flags for needed validations and operations
+    switch ($action)
+      {
+        case 'increment':
+          $test_for_valid_product = true;
+          $test_for_customer_privilege = true;
+          $test_for_membership_privilege = true;
+          $test_ordering_is_open = true;
+          $test_product_availability = true;
+          $test_for_producer_privilege = true;
+          $initiate_change_quantity = true;
+          break;
+        case 'set_quantity':
+          $test_for_valid_product = true;
+          $test_for_customer_privilege = true;
+          $test_for_membership_privilege = true;
+          $test_ordering_is_open = true;
+          $test_product_availability = true;
+          $test_for_producer_privilege = true;
+          $initiate_change_quantity = true;
+          break;
+        case 'out':
+          $test_for_producer_privilege = true;
+          $test_basket_item_exists = true;
+          $test_producer_update_window = true;
+          $initiate_change_outs = true;
+          break;
+        case 'un-out':
+          $test_for_producer_privilege = true;
+          $test_basket_item_exists = true;
+          $test_producer_update_window = true;
+          $initiate_change_outs = true;
+          break;
+        case 'decrement':
+          $test_basket_item_exists = true;
+          $test_ordering_is_open = true;
+          $initiate_change_quantity = true;
+          break;
+        case 'set_weight':
+          $test_for_producer_privilege = true;
+          $test_basket_item_exists = true;
+          $test_producer_update_window = true;
+          break;
+        default:
+          return ('error 101: unexpected request');
+          break;
+      }
+
+    // Get  information about the basket for this member
+    // We may need delcode_id for availability, so do this early
+    $basket_info = get_basket ($member_id, $delivery_id);
+    // See if we already have this basket_item
+    if (is_array ($basket_info))
+      {
+        $basket_item_info = get_basket_item ($basket_info['basket_id'], $product_id);
+        if (! is_array ($basket_item_info))
+          {
+            // Set some defaults -- if the item isn't in the basket yet
+            $basket_item_info['quantity'] = 0;
+            $basket_item_info['out_of_stock'] = 0;
+          }
+      }
+    else // For now, we aren't going to deal with any case where the basket is not yet opened
+      {
+        return ('error 502: basket does not exist');
+      }
+
+    // Check for basket item
+    if ($test_basket_item_exists && ! is_array ($basket_item_info))
+      {
+        return ('error 503: basket item does not exist');
+      }
+
+    // Check if the basket is locked
+    if ($basket_info['locked'] == 1)
+      {
+        return ('error 501: basket is locked');
+      }
+
+    // Check if the product exists, regardless of $cashier_override_not_set
+    if ($test_for_valid_product)
+      {
+        $product_info = get_product ($product_id, $delivery_id);
+        if (! is_array ($product_info))
+          {
+            return ('error 901: product not found in database');
+          }
+      }
+
+    // Check if this producer has permission and is enabled to sell
+    if ($test_for_producer_privilege && $cashier_override_not_set)
+      {
+        $producer_info = get_producer ($product_info['producer_id']);
+        if ($producer_info['donotlist_producer'] > 0 || $producer_info['pending'] == 1)
+          {
+            return ('error 601: producer is restricted from selling');
+          }
+      }
+
+    // Check if the customer is allowed to purchase this product
+    if ($test_for_customer_privilege && $cashier_override_not_set)
+      {
+        $member_info = get_member ($member_id);
+        $member_auth_type_array = explode (',', $member_info['auth_type']);
+        // donotlist == 0 --> 'Retail';
+        // donotlist == 1 --> 'Unlisted';
+        // donotlist == 2 --> 'Archived';
+        // donotlist == 3 --> 'Wholesale';
+        //                    'UNFI Products' (need to check this -ROYG)
+        if (! is_array ($member_auth_type_array) || // no auth_type is set
+          ($product_info['donotlist'] == 0 && ! in_array ('member', $member_auth_type_array)) || // retail product but not a member
+          ($product_info['donotlist'] == 3 && ! in_array ('institution', $member_auth_type_array))) // wholesale product but not institutional member
+          {
+            return ('error 801: incorrect privilege to purchase requested product');
+          }
+      }
+
+    // Check that the member is not "pending" or "discontinued"
+    if ($test_for_membership_privilege && $cashier_override_not_set)
+      {
+        if ($member_info['pending'] == 1 || $member_info['membership_discontinued'] == 1)
+          {
+            return ('error 803: incorrect privilege to order');
+          }
+      }
+
+    // Check if shopping is closed for this order
+    if ($test_ordering_is_open && $cashier_override_not_set)
+      {
+        if (ActiveCycle::ordering_window() == 'closed')
+          {
+            return ('error 701: customer ordering period is not in effect');
+          }
+      }
+
+    // Check if the product can be delivered to this delcode_id
+    if ($test_product_availability && $cashier_override_not_set)
+      {
+        if ($producer_info['available_delcode_ids'] != '' &&
+          ! in_array ($basket_info['delcode_id'], explode(',',$producer_info['available_delcode_ids'])))
+          {
+            return ('error 602: producer does not sell at this location');
+          }
+      }
+
+    // Check if producer activity is taking place within the producer update window
+    if ($test_producer_update_window && $producer_id_you && $cashier_override_not_set)
+      {
+        
+        if (ActiveCycle::producer_update_window() == 'closed')
+          {
+            return ('error 603: producer update window is closed');
+          }
+      }
+
+    // Update the quantity for this basket_item and adjust inventory accordingly
+    if ($initiate_change_quantity)
+      {
+        // Normal customer changes (cashier override not set) will adjust "outs" and "inventory"
+        // quantities dynamically but the cashier override has no effect on them.
+        if ($product_info['inventory_id'] && $cashier_override_not_set)
+          {
+            $old_basket_quantity = $basket_item_info['quantity'];
+            $old_out_of_stock = $basket_item_info['out_of_stock'];
+            // We will roll the old_out_of_stock quantities into the new request
+            // in order to un-out items if possible.
+            $new_out_of_stock = 0;
+            if ($action == 'increment')
+              {
+                $requested_additional_basket_quantity = $old_out_of_stock + $quantity;
+              }
+            elseif ($action == 'set_quantity')
+              {
+                $requested_additional_basket_quantity = $old_out_of_stock + $quantity - $basket_item_info['quantity'];
+              }
+            elseif ($action == 'decrement')
+              {
+                $requested_additional_basket_quantity =  $old_out_of_stock - $quantity;
+              }
+            // Check if this change will more-than-deplete the product inventory
+
+            if ($product_info['inventory_quantity'] < ($requested_additional_basket_quantity * $product_info['inventory_pull']))
+              {
+                // No error... we will just add an "out" to cover the difference
+                // Take everything we can get out of inventory...
+                $new_additional_basket_quantity = floor ($product_info['inventory_quantity'] / $product_info['inventory_pull']);
+              }
+            // Otherwise there is sufficient inventory to cover this request
+            else
+              {
+                $new_additional_basket_quantity = $requested_additional_basket_quantity;
+              }
+            $new_basket_quantity = $old_basket_quantity + $new_additional_basket_quantity;
+            // Then figure out how much is left over for inventory...
+            $new_inventory_quantity = $product_info['inventory_quantity'] - ($new_additional_basket_quantity * $product_info['inventory_pull']);
+            // And "out" anything the inventory could not cover
+            $new_out_of_stock = $requested_additional_basket_quantity - $new_basket_quantity;
+
+            // Before doing anything else, set new inventory levels to prevent conflicts
+            // with other members adding/removing basket items.
+            $query = '
+              UPDATE '.TABLE_INVENTORY.'
+              SET quantity = "'.mysql_real_escape_string ($new_inventory_quantity).'"
+              WHERE inventory_id = "'.mysql_real_escape_string ($product_info['inventory_id']).'"';
+            $result = @mysql_query($query, $connection) or die("Error: 692056" . mysql_error());
+          }
+        // If cashier_override is set OR this is not an inventory-controlled product:
+        // cashiers operations do not affect inventory levels because their actions may
+        // be toward baskets and items that are long-since closed. However the actions
+        // will not change out_of_stock levels unless explicitly directed to do so.
+        else
+          {
+            if ($action == 'increment')
+              {
+                $new_basket_quantity = $basket_item_info['quantity'] + $quantity;
+              }
+            elseif ($action == 'set_quantity')
+              {
+                $new_basket_quantity = $quantity;
+              }
+            elseif ($action == 'decrement')
+              {
+                $new_basket_quantity =  $basket_item_info['quantity'] - $quantity;
+              }
+            $new_inventory_quantity = $product_info['inventory_quantity']; // no change
+            $new_out_of_stock = $basket_item_info['out_of_stock']; // no change
+          }
+        // Update the basket_item with the new quantities
+        $query = '
+          UPDATE '.TABLE_BASKET.'
+          SET out_of_stock = "'.mysql_real_escape_string ($new_out_of_stock).'",
+          SET quantity = "'.mysql_real_escape_string ($new_basket_quantity).'"
+          WHERE bpid = "'.mysql_real_escape_string ($basket_info['bpid']).'"';
+        $result = @mysql_query($query, $connection) or die("Error: 692056" . mysql_error());
+      }
+
+
+
+
+
+
+
+    // Change the "out" setting on this item
+    if ($initiate_change_outs)
+      {
+        if ($action == 'out')
+          {
+          }
+        elseif ($action == 'un-out')
+          {
+          }
+        // Cashier override and producers have same action on outs
+        
+      }
+
+
+
+        if ($cashier_override_not_set)
+          {
+            $old_basket_quantity = $basket_item_info['quantity'];
+            $old_out_of_stock = $basket_item_info['out_of_stock'];
+            // We will roll the old_out_of_stock quantities into the new request
+            // in order to un-out items if possible.
+            $new_out_of_stock = 0;
+            if ($action == 'increment')
+
+
+
+
+
+
+
+
+// Do we delete a basket if it is empty? That would remove possible backtrace from the ledger table.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+    // If we made it this far, then we will add the product or increment the quantity (at
+    // least for a few) -- depending on inventory levels.
+
+
+
+    // We are using the finalized flag to indicate an order is either checked-out or is
+    // in auto-checkout mode. Under these circumstances, we need to update the ledger and
+    // run order-summary functions.
+    if ($basket_info['finalized'] == 1)
+      {
+      }
+
+
+
+
+
+//     if product_info ($product_id);
+//     if customer_ordering_permitted ($product_id, $auth_type); // returns (true | false)                  <-------- WORK HERE
+//     if shopping_is_open ($auth_type); // returns (true | false)
+//     if producer_selling_permitted ($producer_id); // returns (true | false)
+//     if delcode_id_permitted ($delcode_id, $producer_id) // returns (true | false)
+
+
+//     if sufficient_inventory ($product_id, $quantity); // returns (inventory_id, inventory_pull, inventory)
+//     if already_in_basket ($product_id, $basket_id) // returns (true | false)
+//     if invoice_is_frozen ($basket_id) // returns (true | false)
+//     get_account_type ($product_id) // returns (producer | internal)
+// 
+//     [maybe]
+//       add_basket_item ()
+//       add_operation_product
+//       add_operation_extra_charge
+//       reduce_inventory
+//       send_email?
+//     [or]
+//       update_basket_item ()
+//       update_operation_product
+//       update_operation_extra_charge
+//       update_inventory
+//       send_email?
+
+
+
+//     // from the session (do not need all of these)
+//     $this_user = $_SESSION['member_id'];
+//     $username_m = $_SESSION['username_m'];
+//     $valid_username_m = $_SESSION['username_m'];
+//     $show_name = $_SESSION['show_name'];
+//     $producer_id_you = $_SESSION['producer_id_you'];
+// 
+//     // Action to take
+//     if ($action == 'out') {} // Increment by some quantity
+//     if ($action == 'un-out') {} // Decrement by some quantity
+//     if ($action == 'increment') {} // Increment by some quantity
+//     if ($action == 'decrement') {} // Decrement by some quantity
+//     if ($action == 'set_quantity') {} // Decrement by some quantity
+//     if ($action == 'set_weight') {} // Decrement by some quantity
+//   }
+// 
+// function set_basket_item_weight ($delivery_id, $member_id, $product_id, $weight)
+//   {
+//     // from the session (do not need all of these)
+//     $this_user = $_SESSION['member_id'];
+//     $username_m = $_SESSION['username_m'];
+//     $valid_username_m = $_SESSION['username_m'];
+//     $show_name = $_SESSION['show_name'];
+//     $producer_id_you = $_SESSION['producer_id_you'];
+//   }
+// 
+// function set_basket_item_message ($delivery_id, $member_id, $product_id, $action, $message)
+//   {
+//     // Action to take (for improved functionality?)
+//     if ($action == 'delete') {} // Increment by some quantity
+//     if ($action == 'append') {} // Decrement by some quantity
+//     if ($action == 'change') {} // Decrement by some quantity
+//   }
+// 
+// function open_new_basket ($delivery_id, $member_id)
+//   {
+//     
+//   }
+
+
+
+//     OPERATION_ID:       1
+//     OPERATION_TYPE_ID:  5
+//     ACCOUNT_FROM_TYPE:  customer
+//     ACCOUNT_FROM:       323
+//     ACCOUNT_TO_TYPE:    producer
+//     ACCOUNT_TO:         45
+//     AMOUNT:             0
+//     TAXED:              0
+//     FOREIGN_KEY_TYPE:   basket_product_id (bpid)
+//     FOREIGN KEY:        78430 (bpid)
+//     USER:               323 (member who added product)
+//     TIMESTAMP:          now()
+//     METHOD:             null
+//     OPERATION_GROUP:    782 (auto-increment group)
+//     REPLACED_BY:        2
+
+
+
+
+
+// RETURN ERROR CODES:
+
+
+// SUBSUMED FUNCTIONS:
+
+// add product
+// remove product
+// change order quantity
+
+// out product
+// un-out product
+
+// add-change product weight
+
+
+?>

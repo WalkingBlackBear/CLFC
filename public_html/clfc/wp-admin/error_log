@@ -1,0 +1,143 @@
+[13-Oct-2013 01:24:31 UTC] PHP Fatal error:  Cannot redeclare twentythirteen_setup() (previously declared in /home/cloverbe/public_html/clfc/wp-content/themes/clfc/functions.php:69) in /home/cloverbe/public_html/clfc/wp-content/themes/twentythirteen/functions.php on line 104
+[13-Oct-2013 01:24:52 UTC] PHP Fatal error:  Cannot redeclare twentythirteen_setup() (previously declared in /home/cloverbe/public_html/clfc/wp-content/themes/clfc/functions.php:69) in /home/cloverbe/public_html/clfc/wp-content/themes/twentythirteen/functions.php on line 104
+[13-Oct-2013 01:24:57 UTC] PHP Fatal error:  Cannot redeclare twentythirteen_setup() (previously declared in /home/cloverbe/public_html/clfc/wp-content/themes/clfc/functions.php:69) in /home/cloverbe/public_html/clfc/wp-content/themes/twentythirteen/functions.php on line 104
+[13-Oct-2013 01:26:27 UTC] PHP Fatal error:  Cannot redeclare twentythirteen_fonts_url() (previously declared in /home/cloverbe/public_html/clfc/wp-content/themes/clfc/functions.php:73) in /home/cloverbe/public_html/clfc/wp-content/themes/twentythirteen/functions.php on line 149
+[13-Oct-2013 01:26:49 UTC] PHP Fatal error:  Cannot redeclare twentythirteen_scripts_styles() (previously declared in /home/cloverbe/public_html/clfc/wp-content/themes/clfc/functions.php:83) in /home/cloverbe/public_html/clfc/wp-content/themes/twentythirteen/functions.php on line 183
+[13-Oct-2013 01:28:11 UTC] PHP Fatal error:  Cannot redeclare twentythirteen_custom_header_setup() (previously declared in /home/cloverbe/public_html/clfc/wp-content/themes/twentythirteen/inc/custom-header.php:25) in /home/cloverbe/public_html/clfc/wp-content/themes/twentythirteen/inc/custom-header.php on line 61
+[18-Oct-2013 03:45:35 UTC] WordPress database error Duplicate entry 'chicken' for key 'slug' for query INSERT INTO `wp_mp_terms` (`name`,`slug`,`type`) VALUES ('Chicken','chicken','product_category') made by edit_post, wp_update_post, wp_insert_post, do_action('save_post'), call_user_func_array, MarketPress_MS->index_product
+[18-Oct-2013 04:36:22 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4007
+[18-Oct-2013 04:36:22 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4081
+[18-Oct-2013 04:38:16 UTC] WordPress database error Duplicate entry '4-6' for key 'PRIMARY' for query INSERT INTO `wp_mp_term_relationships` (`term_id`,`post_id`) VALUES (6,4) made by edit_post, wp_update_post, wp_insert_post, do_action('save_post'), call_user_func_array, MarketPress_MS->index_product
+[02-Nov-2013 16:42:43 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4007
+[02-Nov-2013 16:42:43 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4081
+[02-Nov-2013 16:42:45 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4007
+[02-Nov-2013 16:42:45 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4081
+[02-Nov-2013 16:42:47 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4007
+[02-Nov-2013 16:42:47 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4081
+[02-Nov-2013 16:42:49 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4007
+[02-Nov-2013 16:42:49 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4081
+[02-Nov-2013 16:55:37 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4007
+[02-Nov-2013 16:55:37 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4081
+[02-Nov-2013 16:55:39 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4007
+[02-Nov-2013 16:55:39 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4081
+[02-Nov-2013 16:55:41 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4007
+[02-Nov-2013 16:55:41 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4081
+[02-Nov-2013 16:55:42 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4007
+[02-Nov-2013 16:55:42 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4081
+[02-Nov-2013 16:55:44 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4007
+[02-Nov-2013 16:55:44 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/cloverbe/public_html/clfc/wp-content/plugins/marketpress/marketpress.php on line 4081
+[10-Nov-2013 17:17:42 UTC] WordPress database error Duplicate column name 'signup_id' for query ALTER TABLE wp_signups ADD signup_id BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST made by wp_upgrade, pre_schema_upgrade
+[10-Nov-2013 17:17:42 UTC] WordPress database error Can't DROP 'domain'; check that column/key exists for query ALTER TABLE wp_signups DROP INDEX domain made by wp_upgrade, pre_schema_upgrade
+[10-Nov-2013 17:17:42 UTC] WordPress database error Table 'wp_users' already exists for query CREATE TABLE wp_users (
+  ID bigint(20) unsigned NOT NULL auto_increment,
+  user_login varchar(60) NOT NULL default '',
+  user_pass varchar(64) NOT NULL default '',
+  user_nicename varchar(50) NOT NULL default '',
+  user_email varchar(100) NOT NULL default '',
+  user_url varchar(100) NOT NULL default '',
+  user_registered datetime NOT NULL default '0000-00-00 00:00:00',
+  user_activation_key varchar(60) NOT NULL default '',
+  user_status int(11) NOT NULL default '0',
+  display_name varchar(250) NOT NULL default '',
+  spam tinyint(2) NOT NULL default '0',
+  deleted tinyint(2) NOT NULL default '0',
+  PRIMARY KEY  (ID),
+  KEY user_login_key (user_login),
+  KEY user_nicename (user_nicename)
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci made by wp_upgrade, make_db_current_silent, dbDelta
+[10-Nov-2013 17:17:42 UTC] WordPress database error Table 'wp_usermeta' already exists for query 
+CREATE TABLE wp_usermeta (
+  umeta_id bigint(20) unsigned NOT NULL auto_increment,
+  user_id bigint(20) unsigned NOT NULL default '0',
+  meta_key varchar(255) default NULL,
+  meta_value longtext,
+  PRIMARY KEY  (umeta_id),
+  KEY user_id (user_id),
+  KEY meta_key (meta_key)
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci made by wp_upgrade, make_db_current_silent, dbDelta
+[10-Nov-2013 17:17:42 UTC] WordPress database error Table 'wp_blogs' already exists for query 
+CREATE TABLE wp_blogs (
+  blog_id bigint(20) NOT NULL auto_increment,
+  site_id bigint(20) NOT NULL default '0',
+  domain varchar(200) NOT NULL default '',
+  path varchar(100) NOT NULL default '',
+  registered datetime NOT NULL default '0000-00-00 00:00:00',
+  last_updated datetime NOT NULL default '0000-00-00 00:00:00',
+  public tinyint(2) NOT NULL default '1',
+  archived tinyint(2) NOT NULL default '0',
+  mature tinyint(2) NOT NULL default '0',
+  spam tinyint(2) NOT NULL default '0',
+  deleted tinyint(2) NOT NULL default '0',
+  lang_id int(11) NOT NULL default '0',
+  PRIMARY KEY  (blog_id),
+  KEY domain (domain(50),path(5)),
+  KEY lang_id (lang_id)
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci made by wp_upgrade, make_db_current_silent, dbDelta
+[10-Nov-2013 17:17:42 UTC] WordPress database error Table 'wp_blog_versions' already exists for query 
+CREATE TABLE wp_blog_versions (
+  blog_id bigint(20) NOT NULL default '0',
+  db_version varchar(20) NOT NULL default '',
+  last_updated datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (blog_id),
+  KEY db_version (db_version)
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci made by wp_upgrade, make_db_current_silent, dbDelta
+[10-Nov-2013 17:17:42 UTC] WordPress database error Table 'wp_registration_log' already exists for query 
+CREATE TABLE wp_registration_log (
+  ID bigint(20) NOT NULL auto_increment,
+  email varchar(255) NOT NULL default '',
+  IP varchar(30) NOT NULL default '',
+  blog_id bigint(20) NOT NULL default '0',
+  date_registered datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (ID),
+  KEY IP (IP)
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci made by wp_upgrade, make_db_current_silent, dbDelta
+[10-Nov-2013 17:17:42 UTC] WordPress database error Table 'wp_site' already exists for query 
+CREATE TABLE wp_site (
+  id bigint(20) NOT NULL auto_increment,
+  domain varchar(200) NOT NULL default '',
+  path varchar(100) NOT NULL default '',
+  PRIMARY KEY  (id),
+  KEY domain (domain,path)
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci made by wp_upgrade, make_db_current_silent, dbDelta
+[10-Nov-2013 17:17:42 UTC] WordPress database error Table 'wp_sitemeta' already exists for query 
+CREATE TABLE wp_sitemeta (
+  meta_id bigint(20) NOT NULL auto_increment,
+  site_id bigint(20) NOT NULL default '0',
+  meta_key varchar(255) default NULL,
+  meta_value longtext,
+  PRIMARY KEY  (meta_id),
+  KEY meta_key (meta_key),
+  KEY site_id (site_id)
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci made by wp_upgrade, make_db_current_silent, dbDelta
+[10-Nov-2013 17:17:42 UTC] WordPress database error Table 'wp_signups' already exists for query 
+CREATE TABLE wp_signups (
+  signup_id bigint(20) NOT NULL auto_increment,
+  domain varchar(200) NOT NULL default '',
+  path varchar(100) NOT NULL default '',
+  title longtext NOT NULL,
+  user_login varchar(60) NOT NULL default '',
+  user_email varchar(100) NOT NULL default '',
+  registered datetime NOT NULL default '0000-00-00 00:00:00',
+  activated datetime NOT NULL default '0000-00-00 00:00:00',
+  active tinyint(1) NOT NULL default '0',
+  activation_key varchar(50) NOT NULL default '',
+  meta longtext,
+  PRIMARY KEY  (signup_id),
+  KEY activation_key (activation_key),
+  KEY user_email (user_email),
+  KEY user_login_email (user_login,user_email),
+  KEY domain_path (domain,path)
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci made by wp_upgrade, make_db_current_silent, dbDelta
+[09-Dec-2013 16:43:00 UTC] WordPress database error Unknown column 'def_month' in 'field list' for query SELECT def_month FROM wp_spidercalendar_calendar made by activate_plugin, do_action('activate_spider-event-calendar/calendar.php'), call_user_func_array, SpiderCalendar_activate, spider_calendar_chech_update
+[09-Dec-2013 16:50:30 UTC] WordPress database error Table 'cloverbe_wp.wp_spidercalendar_calendar' doesn't exist for query SELECT COUNT(*) FROM wp_spidercalendar_calendar  made by do_action('toplevel_page_SpiderCalendar'), call_user_func_array, Manage_Spider_Calendar, show_spider_calendar
+[09-Dec-2013 16:50:30 UTC] WordPress database error Table 'cloverbe_wp.wp_spidercalendar_calendar' doesn't exist for query SELECT * FROM wp_spidercalendar_calendar   ORDER BY title ASC  LIMIT 0,20 made by do_action('toplevel_page_SpiderCalendar'), call_user_func_array, Manage_Spider_Calendar, show_spider_calendar
+[09-Dec-2013 16:50:34 UTC] WordPress database error Table 'cloverbe_wp.wp_spidercalendar_calendar' doesn't exist for query SELECT COUNT(*) FROM wp_spidercalendar_calendar  made by do_action('toplevel_page_SpiderCalendar'), call_user_func_array, Manage_Spider_Calendar, show_spider_calendar
+[09-Dec-2013 16:50:34 UTC] WordPress database error Table 'cloverbe_wp.wp_spidercalendar_calendar' doesn't exist for query SELECT * FROM wp_spidercalendar_calendar   ORDER BY title ASC  LIMIT 0,20 made by do_action('toplevel_page_SpiderCalendar'), call_user_func_array, Manage_Spider_Calendar, show_spider_calendar
+[09-Dec-2013 16:50:41 UTC] WordPress database error Table 'cloverbe_wp.wp_spidercalendar_calendar' doesn't exist for query SELECT COUNT(*) FROM wp_spidercalendar_calendar  made by do_action('toplevel_page_SpiderCalendar'), call_user_func_array, Manage_Spider_Calendar, show_spider_calendar
+[09-Dec-2013 16:50:41 UTC] WordPress database error Table 'cloverbe_wp.wp_spidercalendar_calendar' doesn't exist for query SELECT * FROM wp_spidercalendar_calendar   ORDER BY title ASC  LIMIT 0,20 made by do_action('toplevel_page_SpiderCalendar'), call_user_func_array, Manage_Spider_Calendar, show_spider_calendar
+[09-Dec-2013 16:50:45 UTC] WordPress database error Table 'cloverbe_wp.wp_spidercalendar_calendar' doesn't exist for query SELECT COUNT(*) FROM wp_spidercalendar_calendar  made by do_action('toplevel_page_SpiderCalendar'), call_user_func_array, Manage_Spider_Calendar, show_spider_calendar
+[09-Dec-2013 16:50:45 UTC] WordPress database error Table 'cloverbe_wp.wp_spidercalendar_calendar' doesn't exist for query SELECT * FROM wp_spidercalendar_calendar   ORDER BY title ASC  LIMIT 0,20 made by do_action('toplevel_page_SpiderCalendar'), call_user_func_array, Manage_Spider_Calendar, show_spider_calendar
+[09-Dec-2013 16:51:18 UTC] WordPress database error Unknown table 'wp_spidercalendar_event' for query DROP TABLE wp_spidercalendar_event made by do_action('calendar_page_Uninstall_sp_calendar'), call_user_func_array, Uninstall_sp_calendar
+[09-Dec-2013 16:51:18 UTC] WordPress database error Unknown table 'wp_spidercalendar_calendar' for query DROP TABLE wp_spidercalendar_calendar made by do_action('calendar_page_Uninstall_sp_calendar'), call_user_func_array, Uninstall_sp_calendar
+[09-Dec-2013 16:51:18 UTC] WordPress database error Unknown table 'wp_spidercalendar_theme' for query DROP TABLE wp_spidercalendar_theme made by do_action('calendar_page_Uninstall_sp_calendar'), call_user_func_array, Uninstall_sp_calendar
+[09-Dec-2013 16:51:18 UTC] WordPress database error Unknown table 'wp_spidercalendar_widget_theme' for query DROP TABLE wp_spidercalendar_widget_theme made by do_action('calendar_page_Uninstall_sp_calendar'), call_user_func_array, Uninstall_sp_calendar

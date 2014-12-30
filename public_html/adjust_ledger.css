@@ -1,0 +1,131 @@
+/* CSS for adjust_ledger.php */
+
+body {
+  background-color:#fff;
+  }
+
+table {
+  border:2px solid #000;
+  border-collapse:collapse;
+  margin:auto;
+  }
+tr.replaced td {
+  text-decoration:line-through;
+  color:#888;
+  }
+
+tbody tr:first-child td {
+  border-top:2px solid #666;
+  background-color:#fed;
+  border-bottom:1px solid #888;
+  }
+thead tr:first-child th {
+  background-color:#fed;
+  border-bottom:1px solid #888;
+  }
+
+thead tr th {
+  display:table-cell;
+  font-size:11px;
+  padding:3px 1px;
+  text-align:center;
+  border-right:1px solid #888;
+  }
+tbody tr td {
+  display:table-cell;
+  font-size:10px;
+  padding:3px 1px;
+  text-align:center;
+  border-right:1px solid #888;
+  }
+
+tbody tr td.edit_control {
+  background-color:#fc9;
+  color:#000;
+  border-top:1px solid #888;
+  }
+tbody tr td.edit_control div {
+  width:24%;
+  font-weight:bold;
+  text-align:center;
+  float:left;
+  }
+
+/*
+::-webkit-input-placeholder {
+  color:#ace;
+  }
+::-moz-placeholder {
+  color:#ace;
+  }
+:-ms-input-placeholder {
+  color:#ace;
+  }
+input:-moz-placeholder {
+  color:#ace;
+  }
+*/
+
+.js_link {
+  cursor:pointer;
+  }
+.pseudo_input {
+  display:inline-block;
+  height:15px;
+  font-family: "Lucida Console",monospace;
+  font-size: 12px;
+  padding-top:1px;
+  margin-top:0;
+  background-color:#eee;
+  color:#888;
+  }
+.pseudo_input,
+.regular_input {
+  width:150px;
+  margin-bottom:5px;
+  border:1px solid #000;
+  }
+.wide_input {
+  text-align:left;
+  width:250px;
+  margin-bottom:5px;
+  border:1px solid #000;
+  }
+.edit_dialog {
+  border-top:1px dashed #888;
+  padding-top:5px;
+  margin-top:0;
+  }
+.edit_dialog fieldset {
+  display:block;
+  width:47%;
+  height:100%;
+  text-align:right;
+  }
+.edit_dialog div {
+  width:15%;
+  text-align:center;
+  float:right;
+  }
+.close_row {
+  float:left;
+  color:#a00;
+  font-weight:bold;
+  padding:0 2px;
+  }
+.edit_button {
+  background-color:#fc9;
+  }
+.left {
+  float:left;
+  }
+.right {
+  float:right;
+  }
+.center {
+  text-align:center;
+  margin:auto;
+  }
+.clearboth {
+  clear:both;
+  }

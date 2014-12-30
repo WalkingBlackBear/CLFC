@@ -1,0 +1,76 @@
+TRANSACTIONS_TYPES ---------------------------
+   ttype_id
+   ttype_parent
+ttype_name
+ttype_creditdebit
+ttype_taxed
+ttype_desc
+   ttype_status
+ttype_whereshow
+   ttype_value
+
+TRANSACTIONS ---------------------------------
+   transaction_id
+   transaction_type
+transaction_name
+transaction_amount
+transaction_user
+transaction_producer_id
+transaction_member_id
+transaction_basket_id
+transaction_delivery_id
+transaction_taxed
+transaction_timestamp
+   transaction_batchno
+   transaction_memo
+   transaction_comments
+   transaction_method
+
+LEDGER ---------------------------------------
+transaction_id            int                 
+source_type               enum                
+source_key                int                 
+source_subkey             varchar             
+target_type               enum                
+target_key                int                 
+target_subkey             varchar             
+amount                    decimal(            
+referenced_table          enum                
+referenced_key            int                 
+text_key                  varchar             
+post_by_member_id         mediumint           
+transaction_group         int                 
+replaced_by_transaction   int                 
+timestamp                 timestamp           
+
+
+
+
+
+             'source_type' => 'member',
+             'source_key' => $data['member_id'],
+          'source_subkey' => '',
+             'target_type' => 'internal',
+             'target_key' => 'delivery_cost',
+          'target_subkey' => $basket_info['delcode_id'],
+             'amount' => 0,
+             'referenced_table' => 'baskets',
+             'referenced_key' => $basket_info['basket_id'],
+             'text_key' => 'delivery cost',
+             'post_by_member_id' => $_SESSION['member_id'],
+          'transaction_group' => $basket_info['basket_id'],
+          'message' => '',
+          'delete_on_zero' => 'YES'
+
+  if ($row['ttype_debitcredit'] == "credit") {
+    $source_type = "internal";
+    $target_type = ttype_whereshow;
+    $target_key = "["+ttype_whereshow+"_id]";
+    }
+  if ($row['ttype_debitcredit'] == "debit") {
+    $target_type = "internal";
+    $source_type = ttype_whereshow;
+    $source_key = "["+ttype_whereshow+"_id]";
+    }
+
+
